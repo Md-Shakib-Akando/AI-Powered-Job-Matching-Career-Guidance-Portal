@@ -15,10 +15,10 @@ export default function Navbar() {
                     </div>
                     <div className='flex gap-3 md:gap-6 items-center'>
                         <Link href="/jobs">Browse Job</Link>
-                        <Link href="/">
+                        <Link href="/login">
                             Sign In
                         </Link>
-                        <Link href="/"> <button className='text-white bg-[#f46e2c] md:text-lg rounded-lg px-4 py-2'>
+                        <Link href="/login"> <button className='text-white bg-[#f46e2c] md:text-lg rounded-lg px-4 py-2'>
                             Get Started
                         </button></Link>
 
