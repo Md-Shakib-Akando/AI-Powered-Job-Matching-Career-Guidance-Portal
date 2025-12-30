@@ -1,10 +1,15 @@
+'use client'
 import React from 'react'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import logo from '../../public/assets/logo.png'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from "react"
+import { FaUser, FaBriefcase } from "react-icons/fa"
 
-export default function Login() {
+export default function Register() {
+    const [role, setRole] = useState("candidate")
+
     return (
         <div className="min-h-[calc(100vh-108px)] flex">
 
@@ -27,14 +32,50 @@ export default function Login() {
 
                     <div className="mb-8">
                         <h1 className="text-4xl font-bold text-gray-800 mb-3">
-                            Welcome Back
+                            Create your account
                         </h1>
                         <p className="text-lg text-gray-500">
-                            Sign in to access your dashboard
+                            Start your journey to find the perfect job or candidate
                         </p>
                     </div>
 
                     <form className="space-y-4">
+                        <div className="space-y-2">
+                            <label className="text-lg font-medium text-gray-700 ">I am a</label>
+
+                            <div className="flex gap-4">
+                                {/* Candidate */}
+                                <button
+                                    type="button"
+                                    onClick={() => setRole("candidate")}
+                                    className={`flex items-center justify-center gap-2 w-1/2 py-3 rounded-lg border
+        transition font-medium
+        ${role === "candidate"
+                                            ? "border-teal-500 bg-teal-50 text-teal-600"
+                                            : "border-gray-300 text-gray-600 hover:bg-gray-50"
+                                        }`}
+                                >
+                                    <FaUser />
+                                    Candidate
+                                </button>
+
+                                {/* Employer */}
+                                <button
+                                    type="button"
+                                    onClick={() => setRole("employer")}
+                                    className={`flex items-center justify-center gap-2 w-1/2 py-3 rounded-lg border
+        transition font-medium
+        ${role === "employer"
+                                            ? "border-teal-500 bg-teal-50 text-teal-600"
+                                            : "border-gray-300 text-gray-600 hover:bg-gray-50"
+                                        }`}
+                                >
+                                    <FaBriefcase />
+                                    Employer
+                                </button>
+                            </div>
+                        </div>
+
 
                         <div className="flex flex-col gap-1">
                             <label className="text-sm font-medium text-gray-600">
@@ -74,13 +115,13 @@ export default function Login() {
                             className="w-full bg-blue-900 text-white py-2 rounded-md
               hover:bg-blue-900 transition font-medium"
                         >
-                            Login
+                            Register
                         </button>
-                        <Link href="/register">
+                        <Link href="/login">
                             <p className="text-center text-sm text-gray-600">
-                                Don&apos;t have an account?
+                                Already have an account?
                                 <span className="ml-2 text-blue-700 hover:underline cursor-pointer">
-                                    Sign Up
+                                    Sign In
                                 </span>
                             </p>
                         </Link>
@@ -95,15 +136,22 @@ export default function Login() {
                     <div className="bg-white/10 p-3 rounded-xl">
                         <Image src={logo} alt="Logo" width={100} height={100} />
                     </div>
-
-                    <h1 className="text-4xl font-bold text-center mt-6">
-                        Find Your Dream Job
-                    </h1>
-
-                    <p className="text-lg text-gray-200 text-center my-6 max-w-xl">
+                    {role == "candidate" ? (
+                        <h1 className="text-4xl font-bold text-center mt-6">
+                            Find Your Dream Job
+                        </h1>
+                    ) : (
+                        <h1 className="text-4xl font-bold text-center mt-6">
+                            Find Your Perfect Team
+                        </h1>
+                    )}
+                    {role == "candidate" ? (<p className="text-lg text-gray-200 text-center my-6 max-w-xl">
                         Our AI analyzes your profile to match you with jobs that fit
                         your skills and career goals.
-                    </p>
+                    </p>) : (<p className="text-lg text-gray-200 text-center my-6 max-w-xl">
+                        Our AI matches you with the most qualified candidates based on skills, experience, and culture fit.
+                    </p>)}
+
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                         {[
