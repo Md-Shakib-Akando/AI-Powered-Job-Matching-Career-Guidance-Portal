@@ -16,7 +16,7 @@ export default function Extra() {
                         <p className='text-center text-lg text-gray-300'>Join thousands of candidates and employers who have found their perfect match.</p>
                     </div>
                     <div className='flex  my-5'>
-                        <Link href="/"> <button className='text-white flex items-center gap-4 bg-[#f46e2c] md:text-xl font-semibold rounded-lg px-4 py-3'>
+                        <Link href="/"> <button className='hover:cursor-pointer hover:scale-105 transition transform duration-300 text-white flex items-center gap-4 bg-[#f46e2c] md:text-xl font-semibold rounded-lg px-4 py-3'>
                             Create Free Account <FaArrowRight size={16} />
 
                         </button></Link>

@@ -18,11 +18,11 @@ export default function Banner() {
                         <p className='text-center  md:text-xl xl:text-2xl text-gray-300'>Our AI analyzes skills, experience, and preferences to connect candidates with their dream jobs and help employers find the perfect team members.</p>
                     </div>
                     <div className='flex gap-6 my-10'>
-                        <Link href="/"> <button className='text-white flex items-center gap-4 bg-[#f46e2c] md:text-xl font-semibold rounded-lg px-4 py-3'>
+                        <Link href="/"> <button className='hover:scale-105 transition transform duration-300 text-white flex items-center gap-4 bg-[#f46e2c] md:text-xl font-semibold rounded-lg px-4 py-3 hover:cursor-pointer'>
                             Get Started free <FaArrowRight size={16} />
 
                         </button></Link>
-                        <Link href="/"> <button className='text-white flex items-center gap-4 bg-white/10 border border-white/30 md:text-xl font-semibold rounded-lg px-4 py-3'>
+                        <Link href="/"> <button className='hover:scale-105 transition transform duration-300 text-white flex items-center gap-4 bg-white/10 border border-white/30 md:text-xl font-semibold rounded-lg px-4 py-3 hover:cursor-pointer'>
                             Browse Jobs
 
                         </button></Link>

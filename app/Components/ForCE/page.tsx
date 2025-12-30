@@ -34,7 +34,7 @@ export default function ForCE() {
                             </div>
 
                         </div>
-                        <Link href="/"> <button className='text-white flex items-center gap-4 bg-[#279f95] md:text-lg font-semibold rounded-lg px-4 py-3'>
+                        <Link href="/"> <button className='hover:cursor-pointer hover:scale-105 transition transform duration-300 text-white flex items-center gap-4 bg-[#279f95] md:text-lg font-semibold rounded-lg px-4 py-3'>
                             Find Your Dream Jobs <FaArrowRight size={16} />
 
                         </button></Link>
@@ -60,7 +60,7 @@ export default function ForCE() {
                             </div>
 
                         </div>
-                        <Link href="/"> <button className='text-white flex items-center gap-4 bg-[#279f95] md:text-lg font-semibold rounded-lg px-4 py-3'>
+                        <Link href="/"> <button className='hover:cursor-pointer hover:scale-105 transition transform duration-300 text-white flex items-center gap-4 bg-[#279f95] md:text-lg font-semibold rounded-lg px-4 py-3'>
                             Start Hiring <FaArrowRight size={16} />
 
                         </button></Link>
