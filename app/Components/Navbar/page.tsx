@@ -14,7 +14,7 @@ export default function Navbar() {
 
                     </div>
                     <div className='flex gap-3 md:gap-6 items-center'>
-                        <Link href="/jobs">Browse Job</Link>
+                        <Link href="/browseJobs">Browse Job</Link>
                         <Link href="/login" className='hover:bg-gray-300 p-2 rounded-lg'>
                             Sign In
                         </Link>
