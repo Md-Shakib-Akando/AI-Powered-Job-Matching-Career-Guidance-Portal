@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsBagCheck } from 'react-icons/bs'
+import { CiFilter } from 'react-icons/ci'
 import { FaClipboardList } from 'react-icons/fa'
 import { FiSearch } from 'react-icons/fi'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
@@ -7,7 +8,7 @@ import { IoIosPerson } from 'react-icons/io'
 
 export default function BrowseJobs() {
     return (
-        <div>
+        <div className='min-h-screen'>
             <div>
                 <div>
                     <div className=" bg-gradient-to-br from-[#043566] to-[#43a598] text-white py-20">
@@ -77,6 +78,43 @@ export default function BrowseJobs() {
 
                         </div>
 
+                    </div>
+                    <div className='mt-12  '>
+                        <div className='max-w-10/12 mx-auto flex justify-between items-center'>
+                            <div className='flex  items-center   gap-4'>
+                                <div className='flex items-center gap-1'>
+                                    <CiFilter size={20} />
+                                    <label htmlFor="">Filters : </label>
+                                </div>
+                                <div>
+                                    <select className=" border rounded-md px-4 py-2">
+                                        <option>All Types</option>
+                                        <option>Full-Time</option>
+                                        <option>Part-Time</option>
+                                        <option>Contract</option>
+                                        <option>Internship</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <select className=" border rounded-md px-4 py-2">
+                                        <option>All </option>
+                                        <option>Remote</option>
+                                        <option>On-site</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div className='flex gap-2 items-center'>
+                                <p className='font-semibold text-lg'>0</p>
+                                <p className='text-gray-500'>jobs found</p>
+                            </div>
+                        </div>
+                        <div className='pt-16 max-w-sm mx-auto'>
+                            <div className='flex flex-col justify-center items-center'>
+                                <h1 className='text-3xl font-semibold mb-3'>No jobs found</h1>
+                                <p className='text-center text-gray-500'>We couldn&apos;t find any jobs matching your criteria. Try adjusting your filters or search query.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
