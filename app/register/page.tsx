@@ -8,7 +8,50 @@ import { useState } from "react"
 import { FaUser, FaBriefcase } from "react-icons/fa"
 
 export default function Register() {
-    const [role, setRole] = useState("candidate")
+    const [role, setRole] = useState<"candidate" | "employer">("candidate");
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [error, setError] = useState('');
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!name || !email || !password) {
+            setError("All fields are required");
+            return;
+        }
+        try {
+            const resUserExist = await fetch('api/userExist', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            })
+            const { user } = await resUserExist.json();
+            if (user) {
+                setError("User  email already exists");
+                return;
+            }
+            const res = await fetch('api/register', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ role, name, email, password })
+            })
+            if (res.ok) {
+                const form = e.target as HTMLFormElement;
+                form.reset();
+                setError('');
+                alert("User registered successfully");
+            }
+        } catch (err) {
+            setError("An error occurred during registration");
+        }
+    }
+
 
     return (
         <div className="min-h-[calc(100vh-108px)] flex">
@@ -39,7 +82,7 @@ export default function Register() {
                         </p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="space-y-2">
                             <label className="text-lg font-medium text-gray-700 ">I am a</label>
 
@@ -48,6 +91,7 @@ export default function Register() {
                                 <button
                                     type="button"
                                     onClick={() => setRole("candidate")}
+
                                     className={`flex items-center justify-center gap-2 w-1/2 py-3 rounded-lg border
         transition font-medium
         ${role === "candidate"
@@ -63,6 +107,7 @@ export default function Register() {
                                 <button
                                     type="button"
                                     onClick={() => setRole("employer")}
+
                                     className={`flex items-center justify-center gap-2 w-1/2 py-3 rounded-lg border
         transition font-medium
         ${role === "employer"
@@ -76,7 +121,18 @@ export default function Register() {
                             </div>
                         </div>
 
-
+                        <div className="flex flex-col gap-1">
+                            <label className="text-sm font-medium text-gray-600">
+                                Full Name
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Enter your full name"
+                                onChange={e => setName(e.target.value)}
+                                className="border border-gray-300 rounded-md px-4 py-2
+                focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+                            />
+                        </div>
                         <div className="flex flex-col gap-1">
                             <label className="text-sm font-medium text-gray-600">
                                 Email
@@ -84,6 +140,7 @@ export default function Register() {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
+                                onChange={e => setEmail(e.target.value)}
                                 className="border border-gray-300 rounded-md px-4 py-2
                 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                             />
@@ -97,6 +154,7 @@ export default function Register() {
                             <input
                                 type="password"
                                 placeholder="Enter your password"
+                                onChange={e => setPassword(e.target.value)}
                                 className="border border-gray-300 rounded-md px-4 py-2
                 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                             />
@@ -117,6 +175,9 @@ export default function Register() {
                         >
                             Register
                         </button>
+                        <div>
+                            {error && <p className="text-red-500 text-sm">{error}</p>}
+                        </div>
                         <Link href="/login">
                             <p className="text-center text-sm text-gray-600">
                                 Already have an account?
