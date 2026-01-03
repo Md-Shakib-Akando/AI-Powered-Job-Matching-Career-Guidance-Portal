@@ -8,11 +8,11 @@ import { MdOutlinePersonPinCircle } from 'react-icons/md'
 export default function ForCE() {
     return (
         <div className='bg-gray-50'>
-            <div className='max-w-8/12 mx-auto py-20'>
+            <div className=' lg:max-w-8/12 mx-auto py-20 px-5 lg:px-0'>
 
 
 
-                <div className='flex gap-5 md:gap-10'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10'>
 
                     <div className='bg-[#e8f5f4] rounded-xl p-10'>
                         <div className='flex flex-col mb-5'>

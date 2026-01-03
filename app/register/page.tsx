@@ -6,6 +6,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from "react"
 import { FaUser, FaBriefcase } from "react-icons/fa"
+import { useRouter } from 'next/navigation'
+
 
 export default function Register() {
     const [role, setRole] = useState<"candidate" | "employer">("candidate");
@@ -14,6 +16,7 @@ export default function Register() {
     const [password, setPassword] = useState('');
 
     const [error, setError] = useState('');
+    const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -46,6 +49,7 @@ export default function Register() {
                 form.reset();
                 setError('');
                 alert("User registered successfully");
+                router.push('/')
             }
         } catch (err) {
             setError("An error occurred during registration");
