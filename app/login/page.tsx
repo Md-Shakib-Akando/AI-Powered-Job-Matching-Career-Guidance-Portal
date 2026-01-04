@@ -1,10 +1,38 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import { IoIosArrowRoundBack } from 'react-icons/io'
 import logo from '../../public/assets/logo.png'
 import Image from 'next/image'
 import Link from 'next/link'
+import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const router = useRouter();
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const res = await signIn('credentials', {
+                redirect: false,
+                email,
+                password
+            });
+
+            if (res?.error) {
+                setError(res.error);
+            } else {
+                alert('Login Successful');
+                router.replace('/browseJobs');
+            }
+        } catch (err) {
+            setError('An unexpected error occurred');
+        }
+    }
+
     return (
         <div className="min-h-[calc(100vh-108px)] flex">
 
@@ -34,7 +62,7 @@ export default function Login() {
                         </p>
                     </div>
 
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
 
                         <div className="flex flex-col gap-1">
                             <label className="text-sm font-medium text-gray-600">
@@ -43,6 +71,7 @@ export default function Login() {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
+                                onChange={e => setEmail(e.target.value)}
                                 className="border border-gray-300 rounded-md px-4 py-2
                 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                             />
@@ -56,6 +85,7 @@ export default function Login() {
                             <input
                                 type="password"
                                 placeholder="Enter your password"
+                                onChange={e => setPassword(e.target.value)}
                                 className="border border-gray-300 rounded-md px-4 py-2
                 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                             />
@@ -76,6 +106,9 @@ export default function Login() {
                         >
                             Login
                         </button>
+                        {
+                            error && <p className="text-red-500 text-sm text-center">{error}</p>
+                        }
                         <Link href="/register">
                             <p className="text-center text-sm text-gray-600">
                                 Don&apos;t have an account?
