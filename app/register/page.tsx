@@ -195,7 +195,7 @@ export default function Register() {
             </div>
 
 
-            <div className="hidden lg:flex w-1/2 bg-gradient-to-b from-[#124271] to-[#54b8ab]">
+            <div className="hidden lg:flex w-1/2 ~bg-gradient-to-b from-[#124271] to-[#54b8ab]">
                 <div className="flex flex-col justify-center items-center w-full text-white px-6">
 
                     <div className="bg-white/10 p-3 rounded-xl">

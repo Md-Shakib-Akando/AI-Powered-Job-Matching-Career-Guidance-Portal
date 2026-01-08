@@ -2,12 +2,12 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { signOut } from "next-auth/react"
+import { useSession, signOut } from "next-auth/react"
 import logo from "../../../public/assets/logo.png"
 import ProfileMenu from "../profileIcon/page"
 
 export default function Navbar() {
-
+    const { data: session, status } = useSession();
     const handleLogout = async () => {
         await signOut({ redirect: false })
         alert("Logged out successfully!")
@@ -21,7 +21,7 @@ export default function Navbar() {
 
                     {/* Logo */}
                     <div className="flex gap-2 items-center">
-                        <Image src={logo} alt="Logo" width={80} height={150} />
+                        <Link href="/"><Image src={logo} alt="Logo" width={80} height={150} /></Link>
                     </div>
 
                     {/* Right Menu */}
@@ -52,7 +52,7 @@ export default function Navbar() {
                         {/* Logged In */}
                         {status === "authenticated" && (
                             <>
-                                <ProfileMenu handleLogout={handleLogout}></ProfileMenu>
+                                <ProfileMenu session={session} handleLogout={handleLogout}></ProfileMenu>
                             </>
                         )}
 
