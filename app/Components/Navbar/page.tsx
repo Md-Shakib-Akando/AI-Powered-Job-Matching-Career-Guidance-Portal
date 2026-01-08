@@ -19,22 +19,21 @@ export default function Navbar() {
             <div className="xl:max-w-10/12 mx-auto pt-5">
                 <div className="flex justify-between items-center px-2 xl:px-0">
 
-                    {/* Logo */}
+
                     <div className="flex gap-2 items-center">
                         <Link href="/"><Image src={logo} alt="Logo" width={80} height={150} /></Link>
                     </div>
 
-                    {/* Right Menu */}
                     <div className="flex gap-3 md:gap-6 items-center">
 
                         <Link href="/browseJobs">Browse Job</Link>
 
-                        {/* Loading state (optional but safe) */}
+
                         {status === "loading" && (
                             <span className="text-gray-400">Loading...</span>
                         )}
 
-                        {/* Not Logged In */}
+
                         {status === "unauthenticated" && (
                             <>
                                 <Link href="/login" className="hover:bg-gray-300 p-2 rounded-lg">
@@ -49,10 +48,11 @@ export default function Navbar() {
                             </>
                         )}
 
-                        {/* Logged In */}
+
                         {status === "authenticated" && (
                             <>
                                 <ProfileMenu session={session} handleLogout={handleLogout}></ProfileMenu>
+
                             </>
                         )}
 
