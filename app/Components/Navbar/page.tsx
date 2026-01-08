@@ -2,11 +2,12 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useSession, signOut } from "next-auth/react"
+import { signOut } from "next-auth/react"
 import logo from "../../../public/assets/logo.png"
+import ProfileMenu from "../profileIcon/page"
 
 export default function Navbar() {
-    const { data: session, status } = useSession();
+
     const handleLogout = async () => {
         await signOut({ redirect: false })
         alert("Logged out successfully!")
@@ -51,16 +52,7 @@ export default function Navbar() {
                         {/* Logged In */}
                         {status === "authenticated" && (
                             <>
-                                <span className="font-medium">
-                                    {session?.user?.name || session?.user?.email}
-                                </span>
-
-                                <button
-                                    onClick={handleLogout}
-                                    className="hover:scale-105 transition duration-300 text-white bg-red-500 md:text-lg rounded-lg px-4 py-2"
-                                >
-                                    Logout
-                                </button>
+                                <ProfileMenu handleLogout={handleLogout}></ProfileMenu>
                             </>
                         )}
 
