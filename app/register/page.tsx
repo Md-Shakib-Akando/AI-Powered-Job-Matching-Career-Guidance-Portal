@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useState } from "react"
 import { FaUser, FaBriefcase } from "react-icons/fa"
 import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
 
 
 export default function Register() {
@@ -20,41 +21,48 @@ export default function Register() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
         if (!name || !email || !password) {
             setError("All fields are required");
             return;
         }
+
         try {
-            const resUserExist = await fetch('api/userExist', {
+            const resUserExist = await fetch('/api/userExist', {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email })
-            })
+            });
+
             const { user } = await resUserExist.json();
+
             if (user) {
-                setError("User  email already exists");
+                setError("User email already exists");
                 return;
             }
-            const res = await fetch('api/register', {
+
+            const res = await fetch('/api/register', {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ role, name, email, password })
-            })
+            });
+
             if (res.ok) {
-                const form = e.target as HTMLFormElement;
-                form.reset();
                 setError('');
-                alert("User registered successfully");
-                router.push('/')
+
+
+                await signIn("credentials", {
+                    email,
+                    password,
+                    redirect: true,
+                    callbackUrl: "/",
+                });
             }
+
         } catch (err) {
             setError("An error occurred during registration");
         }
-    }
+    };
 
 
     return (

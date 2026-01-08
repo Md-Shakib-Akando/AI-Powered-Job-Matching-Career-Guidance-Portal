@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa'
 
 export default function Banner() {
     return (
-        <div className="min-h-[calc(100vh-108px)] ~bg-gradient-to-br from-[#124271] to-[#54b8ab] text-white py-20">
+        <div className="min-h-[calc(100vh-108px)] bg-gradient-to-br from-[#124271] to-[#54b8ab] text-white py-20">
             <div className='flex flex-col justify-center items-center'>
                 <div className='bg-white/10 rounded-full px-3 py-1 mt-7 mb-7'>
                     <h1 className=' md:text-lg'>AI-Powered Job Matching</h1>
