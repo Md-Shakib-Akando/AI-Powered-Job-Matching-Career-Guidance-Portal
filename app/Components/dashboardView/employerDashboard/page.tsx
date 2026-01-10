@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 export default function EmployerDashboard() {
     return (
-        <div className='px-10 py-5 bg-gray-100 min-h-screen space-y-4'>
+        <div className='px-10 py-5 bg-gray-100  space-y-4'>
             <section className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
                 <div>
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">

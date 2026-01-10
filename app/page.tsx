@@ -1,5 +1,5 @@
 import Extra from "./Components/Extra/page";
-import Footer from "./Components/Footer/page";
+
 import ForCE from "./Components/ForCE/page";
 import Banner from "./Components/hero/page";
 import HowToMatch from "./Components/HowToMatch/page";
@@ -14,7 +14,7 @@ export default function Home() {
       <ForCE></ForCE>
       <SmartMatch></SmartMatch>
       <Extra></Extra>
-      <Footer></Footer>
+
     </>
   );
 }
