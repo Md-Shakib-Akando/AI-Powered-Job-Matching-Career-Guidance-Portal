@@ -1,7 +1,10 @@
 import React from 'react'
+import DashboardView from '../Components/dashboardView/page'
 
 export default function Dashboard() {
     return (
-        <div className="text-white font-bold text-6xl bg-[#124271] h-screen">Dashboard</div>
+        <div>
+            <DashboardView></DashboardView>
+        </div>
     )
 }
