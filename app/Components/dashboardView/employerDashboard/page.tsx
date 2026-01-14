@@ -23,7 +23,7 @@ export default function EmployerDashboard() {
                 </div>
 
                 <div className="w-full md:w-auto">
-                    <Link href="/">
+                    <Link href="">
                         <button className="w-full md:w-auto hover:scale-105 transition transform duration-300 text-white flex items-center justify-center gap-4 bg-[rgb(40,149,134)] font-medium rounded-lg px-5 py-3">
                             Post New Job
                         </button>

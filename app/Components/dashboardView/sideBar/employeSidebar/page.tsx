@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import {
     FaThLarge,
     FaBuilding,
@@ -15,7 +16,7 @@ import {
 
 const EmployerSideBar = () => {
     const [open, setOpen] = useState(false);
-    const [active, setActive] = useState("Dashboard");
+    const pathname = usePathname();
 
     const baseItem =
         "flex items-center gap-3 px-4 py-3 rounded-lg transition";
@@ -23,6 +24,34 @@ const EmployerSideBar = () => {
         "text-gray-600 hover:bg-gray-100";
     const activeItem =
         "bg-[#163a5f] text-white";
+
+    const menu = [
+        {
+            name: "Dashboard",
+            href: "/dashboard",
+            icon: <FaThLarge />,
+        },
+        {
+            name: "Company Profile",
+            href: "/dashboard/company-profile",
+            icon: <FaBuilding />,
+        },
+        {
+            name: "Post New Job",
+            href: "/dashboard/employer/jobPost",
+            icon: <FaPlusCircle />,
+        },
+        {
+            name: "My Job Listings",
+            href: "/dashboard/jobs",
+            icon: <FaBriefcase />,
+        },
+        {
+            name: "Applicants",
+            href: "/dashboard/applicants",
+            icon: <FaUsers />,
+        },
+    ];
 
     return (
         <>
@@ -44,11 +73,11 @@ const EmployerSideBar = () => {
 
             {/* Sidebar */}
             <aside
-                className={`fixed md:static top-0 left-0 z-50  min-h-screen bg-white border-r px-4 py-6 flex flex-col
+                className={`fixed md:static top-0 left-0 z-50 min-h-screen bg-white border-r px-4 py-6 flex flex-col
         transform transition-transform duration-300
         ${open ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
             >
-                {/* Close button (mobile) */}
+                {/* Close button */}
                 <div className="md:hidden flex justify-end mb-4">
                     <button onClick={() => setOpen(false)}>
                         <FaTimes className="text-xl text-gray-600" />
@@ -77,28 +106,25 @@ const EmployerSideBar = () => {
                     MENU
                 </p>
 
-                <nav className="flex flex-col gap-1 flex-grow">
-                    {[
-                        { name: "Dashboard", icon: <FaThLarge /> },
-                        { name: "Company Profile", icon: <FaBuilding /> },
-                        { name: "Post New Job", icon: <FaPlusCircle /> },
-                        { name: "My Job Listings", icon: <FaBriefcase /> },
-                        { name: "Applicants", icon: <FaUsers /> },
-                    ].map((item) => (
-                        <Link
-                            key={item.name}
-                            href="#"
-                            onClick={() => {
-                                setActive(item.name);
-                                setOpen(false);
-                            }}
-                            className={`${baseItem} ${active === item.name ? activeItem : inactive
-                                }`}
-                        >
-                            {item.icon}
-                            {item.name}
-                        </Link>
-                    ))}
+                <nav className="flex flex-col gap-1 ">
+                    {menu.map((item) => {
+                        const isActive =
+                            pathname === item.href ||
+                            pathname.startsWith(item.href + "/");
+
+                        return (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setOpen(false)}
+                                className={`${baseItem} ${isActive ? activeItem : inactive
+                                    }`}
+                            >
+                                {item.icon}
+                                {item.name}
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 {/* Sign Out */}
