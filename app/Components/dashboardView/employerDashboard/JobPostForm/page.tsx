@@ -4,7 +4,7 @@ import React from "react"
 
 export default function JobPostFormView() {
     return (
-        <div className="py-10">
+        <div className="py-10 bg-gray-50">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="bg-[#124271] rounded-t-2xl p-8 text-white">

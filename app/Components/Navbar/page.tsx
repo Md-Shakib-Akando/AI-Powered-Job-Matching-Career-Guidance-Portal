@@ -15,8 +15,8 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="shadow-md pb-5">
-            <div className="xl:max-w-10/12 mx-auto pt-5">
+        <nav className=" pb-5">
+            <div className="xl:max-w-10/12 mx-auto  bg-white px-5 border border-gray-200 shadow-2xl  rounded-full">
                 <div className="flex justify-between items-center px-2 xl:px-0">
 
 
@@ -51,6 +51,7 @@ export default function Navbar() {
 
                         {status === "authenticated" && (
                             <>
+                                <Link href='/dashboard' className="hover:text-[rgb(33,111,101)]">Dashboard</Link>
                                 <ProfileMenu session={session} handleLogout={handleLogout}></ProfileMenu>
 
                             </>

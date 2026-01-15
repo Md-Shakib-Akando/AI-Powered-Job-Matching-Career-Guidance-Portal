@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { FaUserCircle } from "react-icons/fa"
 import { Session } from "next-auth"
-import Link from "next/link"
+
 
 interface ProfileMenuProps {
     session: Session | null
@@ -24,7 +24,7 @@ const ProfileMenu = ({ session, handleLogout }: ProfileMenuProps) => {
                 <div
                     className="
             absolute -right-18 mt-3 w-52
-            bg-[#124271]
+            bg-[#175088]
             border border-white/20
             rounded-xl
             shadow-2xl
@@ -39,21 +39,6 @@ const ProfileMenu = ({ session, handleLogout }: ProfileMenuProps) => {
                     </div>
 
 
-                    <div className="py-1">
-                        <Link
-                            href="/dashboard"
-                            className="
-                    flex items-center justify-center
-                    px-4 py-2.5
-                    text-sm font-medium
-                    text-white
-                    hover:bg-white/10
-                    transition
-                "
-                        >
-                            Dashboard
-                        </Link>
-                    </div>
 
 
                     <div className="w-full flex items-center justify-center px-4 py-3 border-t border-white/20">

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+
 import React from 'react'
 
 import {
@@ -7,29 +7,22 @@ import {
     FaPlus,
     FaBuilding,
     FaBolt,
-    FaExclamationCircle,
-    FaPlusCircle,
+
 } from "react-icons/fa";
-export default function EmployerDashboard() {
+export default function CandidateDashboard() {
     return (
         <div className='px-10 py-5 bg-gray-100  space-y-4'>
             <section className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
                 <div>
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800">
-                        Employer Dashboard
+                        Candidate Dashboard
                     </h1>
                     <p className="text-gray-500 text-base sm:text-lg mt-2">
                         Manage your job listings and find the perfect candidates
                     </p>
                 </div>
 
-                <div className="w-full md:w-auto">
-                    <Link href="">
-                        <button className="w-full md:w-auto hover:scale-105 transition transform duration-300 text-white flex items-center justify-center gap-4 bg-[rgb(40,149,134)] font-medium rounded-lg px-5 py-3">
-                            <FaPlusCircle />Post New Job
-                        </button>
-                    </Link>
-                </div>
+
             </section>
 
             <section className="mt-10">
@@ -91,26 +84,7 @@ export default function EmployerDashboard() {
             </section>
 
 
-            {/* Complete Profile Banner */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-xl border border-orange-200 bg-orange-50 p-5">
-                <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 flex items-center justify-center rounded-full bg-orange-100 text-orange-600">
-                        <FaExclamationCircle />
-                    </div>
-                    <div>
-                        <h3 className="font-semibold text-gray-900">
-                            Complete Your Company Profile
-                        </h3>
-                        <p className="text-sm text-gray-600">
-                            Set up your company profile to start posting jobs and attracting top talent
-                        </p>
-                    </div>
-                </div>
 
-                <button className="px-5 py-2.5 rounded-lg bg-[#0f2f4a] text-white text-sm font-medium hover:bg-[#0b253a] transition">
-                    Set Up Company →
-                </button>
-            </div>
 
             {/* Listings + Applicants */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

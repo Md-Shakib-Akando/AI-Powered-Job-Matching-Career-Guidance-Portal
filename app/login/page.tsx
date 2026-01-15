@@ -26,7 +26,7 @@ export default function Login() {
                 setError(res.error);
             } else {
                 alert('Login Successful');
-                router.replace('/browseJobs');
+                router.replace('/');
             }
         } catch (err) {
             setError('An unexpected error occurred');
@@ -34,7 +34,7 @@ export default function Login() {
     }
 
     return (
-        <div className="min-h-[calc(100vh-108px)] flex">
+        <div className="min-h-screen flex">
 
 
             <div className="w-full lg:w-1/2 flex justify-center items-center px-4">

@@ -6,15 +6,14 @@ import { usePathname } from "next/navigation";
 import {
     FaThLarge,
     FaBuilding,
-    FaPlusCircle,
-    FaBriefcase,
+
     FaUsers,
     FaSignOutAlt,
     FaBars,
     FaTimes,
 } from "react-icons/fa";
 
-const EmployerSideBar = () => {
+const CandidateSideBar = () => {
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
 
@@ -32,22 +31,19 @@ const EmployerSideBar = () => {
             icon: <FaThLarge />,
         },
         {
-            name: "Company Profile",
-            href: "/dashboard/company-profile",
+            name: "My Profile",
+            href: "/dashboard/my-profile",
             icon: <FaBuilding />,
         },
+
+
         {
-            name: "Post New Job",
-            href: "/dashboard/employer/jobPost",
-            icon: <FaPlusCircle />,
+            name: "My-Applicants",
+            href: "/dashboard/applicants",
+            icon: <FaUsers />,
         },
         {
-            name: "My Job Listings",
-            href: "/dashboard/jobs",
-            icon: <FaBriefcase />,
-        },
-        {
-            name: "Applicants",
+            name: "My-Resume",
             href: "/dashboard/applicants",
             icon: <FaUsers />,
         },
@@ -145,4 +141,4 @@ const EmployerSideBar = () => {
     );
 };
 
-export default EmployerSideBar;
+export default CandidateSideBar;
